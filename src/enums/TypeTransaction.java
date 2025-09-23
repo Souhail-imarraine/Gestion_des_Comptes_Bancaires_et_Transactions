@@ -1,5 +1,7 @@
 package enums;
 
-public class TypeTransaction {
-
+public enum TypeTransaction {
+    DEPOT,
+    RETRAIT,
+    VIREMENT
 }

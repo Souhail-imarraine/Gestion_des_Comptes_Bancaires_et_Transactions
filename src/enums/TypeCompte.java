@@ -1,5 +1,7 @@
 package enums;
 
-public class TypeCompte {
-
+public enum TypeCompte {
+    COURANT,
+    EPARGNE,
+    DEPOTATERME
 }
