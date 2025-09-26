@@ -1,33 +1,38 @@
 package model;
 
-import java.util.UUID;
 import java.util.ArrayList;
-import model.Compte;
+import java.util.List;
+import java.util.UUID;
 
 public class Client extends Personne {
-    private UUID idClients;
-    private ArrayList<Compte> comptes;
+    private final String idClient;
+    private final List<Compte> comptes = new ArrayList<>();
 
-    public Client(String nom, String prenom, String email, String motDePasse, UUID idClients){
+    public Client(String nom, String prenom, String email, String motDePasse) {
         super(nom, prenom, email, motDePasse);
-        this.idClients = idClients;
+        this.idClient = UUID.randomUUID().toString();
     }
 
-    public UUID getIdClients() {
-        return idClients;
+    public String getIdClient() {
+        return idClient;
     }
 
-    public void setIdClients(UUID idClients) {
-        this.idClients = idClients;
-    }
-
-    public ArrayList<Compte> getComptes() {
+    public List<Compte> getComptes() {
         return comptes;
     }
 
-    public void setComptes(ArrayList<Compte> comptes) {
-        this.comptes = comptes;
+    public void addCompte(Compte compte) {
+        if (compte != null) {
+            comptes.add(compte);
+        }
     }
 
+    public void removeCompte(Compte compte) {
+        comptes.remove(compte);
+    }
 
+    @Override
+    public String toString() {
+        return "Client{" + "id='" + idClient + '\'' + ", name=" + prenom + " " + nom + '}';
+    }
 }
