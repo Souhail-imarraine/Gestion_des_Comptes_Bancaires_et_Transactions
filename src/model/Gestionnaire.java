@@ -9,9 +9,9 @@ public class Gestionnaire extends Personne {
     private final String departement;
     private final List<Client> listeClients = new ArrayList<>();
 
-    public Gestionnaire(String nom, String prenom, String email, String motDePasse, String departement) {
+    public Gestionnaire(String idGestionnaire, String nom, String prenom, String email, String motDePasse, String departement) {
         super(nom, prenom, email, motDePasse);
-        this.idGestionnaire = UUID.randomUUID().toString();
+        this.idGestionnaire = idGestionnaire;
         this.departement = departement;
     }
 

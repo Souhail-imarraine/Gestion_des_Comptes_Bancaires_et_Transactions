@@ -17,7 +17,7 @@ public class Transaction {
 
     public Transaction(String idTransaction, TypeTransaction type, BigDecimal montant,
                        LocalDateTime date, String motif, Compte compteSource, Compte compteDestination) {
-        this.idTransaction = UUID.randomUUID().toString();
+        this.idTransaction = idTransaction;
         this.type = type;
         this.montant = montant;
         this.date = date;

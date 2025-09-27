@@ -15,8 +15,8 @@ public class Compte {
     private final List<Transaction> transactions = new ArrayList<>();
     private Client client; // association
 
-    public Compte(TypeCompte typeCompte, Client client) {
-        this.idCompte = UUID.randomUUID().toString();
+    public Compte(String idCompte, TypeCompte typeCompte, Client client) {
+        this.idCompte = idCompte;
         this.typeCompte = typeCompte;
         this.client = client;
     }

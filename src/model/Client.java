@@ -8,9 +8,9 @@ public class Client extends Personne {
     private final String idClient;
     private final List<Compte> comptes = new ArrayList<>();
 
-    public Client(String nom, String prenom, String email, String motDePasse) {
+    public Client(String idClient, String nom, String prenom, String email, String motDePasse) {
         super(nom, prenom, email, motDePasse);
-        this.idClient = UUID.randomUUID().toString();
+        this.idClient = idClient;
     }
 
     public String getIdClient() {
