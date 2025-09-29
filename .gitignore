@@ -27,6 +27,5 @@ bin/
 ./.idea/
 ### Mac OS ###
 .DS_Store
-.idea/
-.vscode/
-*.iml
+idea/
+Bank_Java.iml
