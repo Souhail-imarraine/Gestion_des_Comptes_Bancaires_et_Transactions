@@ -79,19 +79,39 @@ public class ClientController {
 
     private Compte chooseCompte(Client client) {
         List<Compte> comptes = client.getComptes();
+        // System.out.println(comptes);
         if (comptes.isEmpty()) {
-            System.out.println("Aucun compte.");
+            System.out.println("Aucun compte trouve pour ce client.");
+            System.out.println("Veuillez contacter un administrateur pour creer un compte.");
             return null;
         }
         for (int i = 0; i < comptes.size(); i++) {
             System.out.println((i + 1) + ") " + comptes.get(i));
         }
-        int idx = view.readInt("Choisir numero du compte");
-        if (idx < 1 || idx > comptes.size()) {
-            System.out.println("Index invalide");
-            return null;
+        String input = view.readString("Choisir numero du compte ou ID (ex: 1 ou CP-1)");
+        Compte selected = null;
+        // Essayer d'abord comme index
+        try {
+            int idx = Integer.parseInt(input.trim());
+            if (idx >= 1 && idx <= comptes.size()) {
+                selected = comptes.get(idx - 1);
+            } else {
+                System.out.println("Index hors limite.");
+            }
+        } catch (NumberFormatException e) {
+            // Chercher par ID
+            String wantedId = input.trim();
+            for (Compte c : comptes) {
+                if (c.getIdCompte().equalsIgnoreCase(wantedId)) {
+                    selected = c;
+                    break;
+                }
+            }
+            if (selected == null) {
+                System.out.println("Aucun compte avec cet ID dans vos comptes.");
+            }
         }
-        return comptes.get(idx - 1);
+        return selected;
     }
 
     private void handleShowHistory(Client client) {
